@@ -3,9 +3,14 @@ import postgres from "postgres";
 import dotenv from "dotenv";
 // import cors from "cors";
 
+console.log(process.env.DATABASE_URL, "before");
+
 dotenv.config();
 
+console.log(process.env.DATABASE_URL, "after");
+
 const sql = postgres(process.env.DATABASE_URL);
+
 
 const app = express();
 

@@ -1,12 +1,11 @@
 import express from "express";
 import postgres from "postgres";
+import dotenv from "dotenv";
 // import cors from "cors";
 
-//node.js
-//postgresql
-//install all npm libraries
+dotenv.config();
 
-const sql = postgres({ database: "movies_2022" });
+const sql = postgres(process.env.DATABASE_URL);
 
 const app = express();
 

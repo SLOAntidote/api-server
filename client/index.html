@@ -8,6 +8,47 @@
     <script defer src="app.js"></script>
 </head>
 <body>
-   <h1>My App</h1> 
+   <h1>Lance's 2022 Movie Ratings</h1> 
+   <h2>Join the Squad?</h2>
+   <form class="create-user-form">
+       <label for="first-name">First Name:</label>
+       <input type="text" id="first-name" name="First Name" />
+
+        <label for="user">Username:</label>
+        <input type="text" id="user" name="Username" />
+
+        <label for="fav-genre">Favorite Genre:</label>
+        <input type="text" id="fav-genre" name="Favorite Genre" />
+        
+        <button type="submit">Join</button>
+    </form>
+
+    <h2>Current Users:</h2>
+    <div class = "user-list"></div>
+
+   <h2>Rate A Movie:</h2>
+   <form class="create-movie-form">
+       <label for="title">Movie Title:</label>
+       <input type="text" id="title" name="Title" />
+
+       <label for="genre">Movie Genre:</label>
+       <input type="text" id="genre" name="Genre" />
+       
+       <label for="rating">Movie Rating:</label>
+       <input type="text" id="rating" name="Rated" />
+       
+       <label for="length">Movie Length:</label>
+       <input type="number" id="length" name="Length (minutes)" />
+
+       <label for="user-name">User Name:</label>
+       <input type="text" id="user-name" name="User Name" />
+       
+       <label for="score">User Rating:</label>
+       <input type="number" id="score" name="Score (1-10)" />
+       
+       <button type="submit">Create</button>
+    </form>
+    <h2>Rated Movies:</h2>
+    <div class = "movie-list"></div>
 </body>
 </html>

@@ -18,6 +18,12 @@ CREATE TABLE users (
     favorite_genre TEXT
 );
 
+CREATE TABLE users (
+    id SERIAL, 
+    first_name TEXT, 
+    user_name VARCHAR(50), 
+    favorite_genre TEXT
+);
 
 INSERT INTO movies (title, genre, movie_rating, runtime_minutes, user_name, user_rating) VALUES ('Everything Everywhere All At Once', 'Action', 'R', 139, 'SLOAntidote', 10);
 INSERT INTO movies (title, genre, movie_rating, runtime_minutes, user_name, user_rating) VALUES ('Jurassic World: Dominion', 'Action', 'PG-13', 147, 'Mapache1991', 4);

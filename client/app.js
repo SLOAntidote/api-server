@@ -19,6 +19,31 @@ fetch("/api/users").then(res => res.json()).then((users) => {
     }
 });
 
+//Add a user
+const createUserForm = document.querySelector(".create-user-form");
+createUserForm.addEventListener("submit", (event) => {
+    const data = new FormData(event.target);
+    console.log(data);
+    debugger
+    const newUser = {
+        first_name: data.get('First Name'),
+        user_name: data.get('Username'),
+        favorite_genre: data.get('Favorite Genre')
+    };
+    console.log(newUser);
+    fetch("/api/users", {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        method: 'POST', 
+        body: JSON.stringify(newUser),
+    }).then((res) => res.json()).then((user) => {
+        const div2 = document.createElement("div");
+        div2.textContent = `Username: ${user.user_name} - Favorite Genre: ${user.favorite_genre}`;
+        userList.prepend(div2);
+    });
+});
+
 //Add feature for user to add movies
 const createMovieForm = document.querySelector(".create-movie-form");
 createMovieForm.addEventListener("submit", (event) => {
@@ -29,7 +54,7 @@ createMovieForm.addEventListener("submit", (event) => {
         genre: data.get('Genre'),
         movie_rating: data.get('Rated'),
         runtime_minutes: data.get('Length (minutes)'),
-        user_name: data.get('User Name'),
+        user_name: data.get('Username'),
         user_rating: data.get('Score (1-10)')
     };
 

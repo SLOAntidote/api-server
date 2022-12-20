@@ -55,7 +55,6 @@ app.get("/api/movies/:id", (req, res, next) => {
 //Route to allow new movies to be added
 app.post("/api/movies", (req, res, next) => {
     const movie = req.body;
-    console.log(req.body);
     const requiredFields = ["title", "genre", "movie_rating", "runtime_minutes", "user_name", "user_rating"];
     const errors = [];
     for(let field of requiredFields) {
@@ -92,6 +91,26 @@ app.get("/api/users", (req, res, next) => {
         next(err);
     });
     };
+});
+
+//Route to add new users
+app.post("/api/users", (req, res, next) => {
+    const user = req.body;
+    const requiredFields = ["first_name", "user_name", "favorite_genre"];
+    const errors = [];
+    for(let field of requiredFields) {
+        if(user[field] === undefined) {
+            errors.push(`Missing user '${field}'.`);
+        }
+    }
+    const { first_name, user_name, favorite_genre } = req.body;
+    sql`INSERT INTO users (first_name, user_name, favorite_genre) VALUES (${first_name}, ${user_name}, ${favorite_genre}) RETURNING *`.then(
+        (result) => {
+            res.status(201);
+            res.send(result[0]);
+        }).catch((err) => {
+            next(err);
+        });
 });
 
 //Handle errors

@@ -23,8 +23,6 @@ fetch("/api/users").then(res => res.json()).then((users) => {
 const createUserForm = document.querySelector(".create-user-form");
 createUserForm.addEventListener("submit", (event) => {
     const data = new FormData(event.target);
-    console.log(data);
-    debugger
     const newUser = {
         first_name: data.get('First Name'),
         user_name: data.get('Username'),
